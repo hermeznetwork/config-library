@@ -40,12 +40,14 @@ func LoadConfig(filePath string, defaultValues string, cfg interface{}) error {
 		return fmt.Errorf("error loading default configuration: %w", err)
 	}
 	// Get file configuration
-	if err := loadFile(filePath, cfg); err != nil {
-		return fmt.Errorf("error loading configuration file: %w", err)
-	}
+	errLoadFile := loadFile(filePath, cfg)
 	// Overwrite file configuration with the env configuration
-	if err := loadEnv(cfg); err != nil {
-		return fmt.Errorf("error getting configuration from env: %w", err)
+	errLoadEnv := loadEnv(cfg)
+	if errLoadFile != nil {
+		return fmt.Errorf("error loading configuration file: %w", errLoadFile)
+	}
+	if errLoadEnv != nil {
+		return fmt.Errorf("error loading environment variables: %w", errLoadEnv)
 	}
 	return nil
 }
