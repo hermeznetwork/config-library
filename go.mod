@@ -1,4 +1,4 @@
-module github.com/hermeznetwork/config-library
+module github.com/hermeznetwork/go-hermez-config
 
 go 1.15
 
