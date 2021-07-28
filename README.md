@@ -9,7 +9,7 @@ package main
 import (
 	"fmt"
 
-	configLibrary "github.com/hermeznetwork/config-library"
+	configLibrary "github.com/hermeznetwork/go-hermez-config"
 )
 
 func main() {
